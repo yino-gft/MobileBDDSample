@@ -13,7 +13,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"classpath:features"} 
 							, glue= {"com.santander.globile.coreapp.steps"}
-							//, tags = {"@validCredentialIOS"}
+							, tags = {"@globalposition"}
 							, plugin={"com.cucumber.listener.ExtentCucumberFormatter:target/html/MobileBDDReport.html"}
 				)
 

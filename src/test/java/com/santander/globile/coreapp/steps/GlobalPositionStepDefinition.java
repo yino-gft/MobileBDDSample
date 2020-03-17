@@ -28,7 +28,7 @@ public class GlobalPositionStepDefinition {
 	private final String PACKAGE = "com.santander.globile.coreapp";
 	//private final String SEARCH_ACTIVITY = ".Login";
 	
-    //@Before
+    @Before
 	public void setUp() throws MalformedURLException {
 		
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -46,6 +46,7 @@ public class GlobalPositionStepDefinition {
 		capabilities.setCapability(MobileCapabilityType.APP,"C:\\Users\\ynavarro\\Downloads\\coreapp.apk");
 		
 		driver = new AndroidDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+		//driver = new AndroidDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
 	}
 
 
@@ -58,7 +59,10 @@ public class GlobalPositionStepDefinition {
     	driver.findElementById("com.santander.globile.coreapp:id/loginButton").click();
     	*/
 		
-		driver.findElement(By.id("com.santander.globile.coreapp:id/userField")).sendKeys(arg1);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.santander.globile.coreapp:id/userField"))).sendKeys(arg1);
+		
+		//driver.findElement(By.id("com.santander.globile.coreapp:id/userField")).sendKeys(arg1);
     	driver.findElement(By.id("com.santander.globile.coreapp:id/test")).sendKeys(arg2);
     	driver.findElement(By.id("com.santander.globile.coreapp:id/loginButton")).click();
     	
